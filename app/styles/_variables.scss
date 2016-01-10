@@ -1,0 +1,38 @@
+// === colors === //
+$color-white: #FFFFFF;
+$color-black: #000000;
+$color-grey: #CCCCCC;
+
+$background-colors-header: #28343B;
+$background-colors-selected: #EDFFEE;
+$background-colors-check: #4CC148;
+$background-colors-focus: #F6FCFF;
+$background-colors-invalid: #FFE9EB;
+$background-colors-message: #0495CC;
+$background-colors-footer: #ECF1F1;
+$background-colors-infoField: rgb(251, 250, 221);
+
+$text-color-body: #4F5051;
+$text-colors-light: #AAAAAA;
+$text-colors-dark: #505050;
+$text-colors-selected: #4AC248;
+$text-colors-highlight: #21A1D4;
+$text-colors-infoField: rgb(143, 135, 46);
+
+$border-colors-dark: #AAAAAA;
+$border-colors-light: #DAE4E5;
+$border-colors-selected: #41A63C;
+$border-colors-focus: #8FC4FF;
+$border-colors-invalid: #F52642;
+$border-colors-infoField: rgb(222, 212, 138);
+
+$button-colors-submit: #1552A3;
+$button-colors-submit-hover: rgba(21, 82, 163, 0.8);
+
+// === breakpoints === //
+$phones-min: '(min-width: 768px)';
+$tablets-min: '(min-width: 960px)';
+$desktops-min: '(min-width: 1200px)';
+$phones-max: '(max-width: 767px)';
+$tablets-max: '(max-width: 959px)';
+$desktops-max: '(max-width: 1199px)';

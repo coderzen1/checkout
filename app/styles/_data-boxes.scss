@@ -1,0 +1,284 @@
+.plans,
+.payments {
+  position: relative;
+
+  padding-bottom: 10px;
+
+  .__title {
+    font-family: 'Open Sans';
+    font-size: 24px;
+    font-weight: 400;
+
+    margin-bottom: 22px;
+  }
+
+  .__title--mobile-hide {
+    display: block;
+    @media #{$phones-max} {
+      display: none;
+    }
+  }
+
+  .__title--mobile-show {
+    display: none;
+
+    margin-top: 0;
+    @media #{$phones-max} {
+      display: block;
+    }
+  }
+
+  .__title--highlight {
+    font-size: 12px;
+    font-weight: 600;
+
+    margin-top: 25px;
+
+    cursor: pointer;
+    text-align: right;
+
+    color: $text-colors-highlight;
+  }
+
+  .data-box {
+    min-height: 90px;
+
+    @media #{$phones-max} {
+      min-height: 80px;
+    }
+  }
+
+  .__image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    height: 35px;
+    margin: 0;
+    margin-right: -50%;
+
+    transform: translate(-50%, -50%);
+  }
+}
+
+.data-box {
+  position: relative;
+
+  display: inline-block;
+
+  min-width: 300px;
+  margin-bottom: 10px;
+  padding-top: 23px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+
+  cursor: pointer;
+  text-align: center;
+
+  color: $text-colors-light;
+  border: 2px solid $border-colors-light;
+  border-radius: 10px;
+
+  &:hover {
+    background-color: $background-colors-selected;
+  }
+
+  @media #{$phones-min} and (max-width: 990px) {
+    min-width: 232px;
+  }
+
+  @media #{$phones-max} {
+    min-width: 100%;
+    margin-bottom: 10px;
+    padding-top: 15px;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .__top-text {
+    font-family: 'Open Sans';
+    font-size: 22px;
+    font-weight: 700;
+
+    margin-bottom: 0;
+
+    @media #{$phones-max} {
+      font-size: 18px;
+
+      margin-bottom: 5px;
+
+      text-align: left;
+    }
+  }
+
+  .__price {
+    font-family: 'Open Sans';
+    font-size: 38px;
+    font-weight: 700;
+
+    margin: 0;
+
+    color: $text-colors-dark;
+
+    @media #{$phones-max} {
+      font-size: 32px;
+      font-weight: 600;
+
+      position: absolute;
+      top: 5px;
+      right: 15px;
+    }
+  }
+
+  .__bottom-text {
+    font-family: 'Open Sans';
+    font-size: 14px;
+    font-weight: 400;
+
+    margin: 0 auto;
+
+    @media #{$phones-max} {
+      text-align: right;
+    }
+  }
+
+  .__discount {
+    font-family: 'Open Sans';
+    font-size: 16px;
+    font-weight: 600;
+
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+
+    margin: 0;
+
+    @media #{$phones-max} {
+      top: 35px;
+      right: initial;
+      left: 15px;
+    }
+  }
+
+  .__billing {
+    display: none;
+
+    @media #{$phones-max} {
+      display: block;
+
+      width: 92%;
+      margin: 0 auto;
+      margin-top: 5px;
+      padding-top: 5px;
+
+      border-top: 1px solid $border-colors-light;
+    }
+  }
+
+  input[type=checkbox] {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    visibility: hidden;
+
+    width: 100%;
+    height: 100%;
+
+    &:checked {
+      color: #000000;
+      border-color: $border-colors-selected;
+      background-color: $background-colors-selected;
+
+      & .__price,
+      & .__discount {
+        color: $text-colors-selected;
+      }
+
+      &:after {
+        position: absolute;
+        top: -15px;
+        right: -15px;
+
+        width: 30px;
+        height: 30px;
+
+        content: '';
+
+        border: 1px solid $border-colors-selected;
+        border-radius: 15px;
+        background-color: $background-colors-check;
+        background-image: url('../images/tick.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 18px;
+      }
+    }
+  }
+}
+
+.data-box--selected {
+  color: #000000;
+  border-color: $border-colors-selected;
+  background-color: $background-colors-selected;
+
+  & .__price,
+  & .__discount {
+    color: $text-colors-selected;
+  }
+
+  &:after {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+
+    width: 30px;
+    height: 30px;
+
+    content: '';
+
+    border: 1px solid $border-colors-selected;
+    border-radius: 15px;
+    background-color: $background-colors-check;
+    background-image: url('../images/checkmark.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 18px;
+  }
+}
+
+.plans {
+  border-bottom: 1px solid $border-colors-light;
+
+  .__title {
+    margin-top: 35px;
+    margin-bottom: 20px;
+  }
+
+  .data-box {
+    min-height: 160px;
+    @media #{$phones-max} {
+      min-height: 105px;
+    }
+  }
+
+  @media #{$phones-max} {
+    padding-bottom: 10px;
+  }
+}
+
+.__payments-title-reduce {
+  display: none;
+}
+
+.payments-bottom-row {
+  display: none;
+}
+
+.row-padding-top {
+  padding-top: 15px;
+}
+
+.discounts-and-renewal {
+  padding-left: 0;
+}

@@ -1,0 +1,71 @@
+html {
+  position: relative;
+
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 220px;
+
+  color: $text-color-body;
+  background: $color-white;
+
+  @media #{$phones-max} {
+    margin-bottom: 0;
+  }
+}
+
+html,
+body {
+  font-family: 'Open Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+input[type=text],
+input[type=text]:focus,
+input[type="number"],
+input[type="number"]:focus {
+  font-size: 1em;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  select,
+  select:focus,
+  textarea,
+  textarea:focus,
+  input,
+  input:focus {
+    font-size: 1em;
+  }
+}
+
+.browserupgrade {
+  margin: 0.2 0;
+  padding: 0.2 0;
+
+  color: $color-black;
+  background: $color-grey;
+}
+
+.wrapper {
+  position: relative;
+
+  max-width: 990px;
+  margin: 0 auto;
+
+  .container {
+    max-width: 990px;
+  }
+}
+
+.hidden-inputs {
+  display: none;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.show {
+  display: block;
+}

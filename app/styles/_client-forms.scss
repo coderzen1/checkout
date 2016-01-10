@@ -1,0 +1,524 @@
+// === Base form fields styling === //
+
+#checkout-form {
+  select {
+    width: 115%;
+
+    border: none;
+
+    -webkit-appearance: none;
+  }
+
+  select:focus::-ms-value {
+    color: black;
+    background-color: $background-colors-focus;
+  }
+
+  select:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000000;
+  }
+
+  input {
+    border-radius: 0;
+
+    -webkit-appearance: none;
+  }
+  input:focus,
+  select:focus {
+    outline: none;
+    background-color: $background-colors-focus;
+
+    -webkit-appearance: none;
+  }
+
+  input:focus {
+    border: 1px solid $border-colors-focus;
+  }
+
+  input:invalid {
+    box-shadow: none;
+  }
+
+  label {
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 32px;
+
+    position: absolute;
+    top: 15px;
+    // left: 5px;
+
+    overflow: hidden;
+
+    padding-left: 20px;
+
+    -webkit-transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    transition: 0.2s ease all;
+    white-space: nowrap;
+    letter-spacing: 0;
+    text-transform: none;
+    text-overflow: ellipsis;
+
+    opacity: 0.5;
+  }
+
+  label.__form-label--higher {
+    top: 8px;
+  }
+
+  input:focus ~ label,
+  input.not-empty ~ label,
+  select:focus ~ label,
+  select.not-empty ~ label {
+    font-size: 10px;
+
+    top: -3px;
+  }
+
+  .__options-wrapper > label {
+    padding-left: 5px;
+  }
+
+  .__checkbox-wrapper {
+    label {
+      padding-left: 30px;
+      opacity: 1;
+    }
+  }
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  margin: 0;
+
+  -webkit-appearance: none;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input[type=radio] {
+  display: none;
+}
+
+.row--no-spacing {
+  margin: 0;
+  padding: 0;
+}
+
+.row--pad-right-1 {
+  padding-right: 1px;
+
+  @media #{$phones-max} {
+    padding-right: 0;
+  }
+}
+
+
+// === Different form layouts wrapper styling === //
+
+.single-column-form {
+  display: none;
+}
+
+.two-column-form {
+  .standard-checkbox {
+    padding-left: 20px;
+  }
+}
+
+.express-form {
+  display: none;
+}
+
+
+// === Form fields Title and text styling === //
+
+.customer-info {
+  font-family: 'Open Sans';
+
+  padding: 0;
+
+  .__title {
+    font-family: 'Open Sans';
+    font-size: 20px;
+    font-weight: 400;
+
+    margin-top: 4px;
+    margin-bottom: 1 4px;
+    padding-top: 10px;
+  }
+}
+
+
+// === form input fields styling === //
+
+.form-field {
+  width: 100%;
+  height: 65px;
+  padding-left: 20px;
+
+  border: 1px solid $border-colors-light;
+  background-color: white;
+}
+
+.form-field--half {
+  width: 100%;
+  height: 65px;
+
+  border: 1px solid $border-colors-light;
+  background-color: white;
+}
+
+.form-field--mobile-show {
+  display: none;
+
+  @media #{$phones-max} {
+    display: block;
+  }
+}
+
+.form-field--mobile-hide {
+  display: block;
+
+  @media #{$phones-max} {
+    display: none;
+  }
+}
+
+:placholder {
+  font-size: 12px;
+}
+
+::-webkit-input-placeholder {
+  font-size: 12px;
+}
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  font-size: 12px;
+}
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  font-size: 12px;
+}
+
+:-ms-input-placeholder {
+  font-size: 12px;
+}
+
+.form-field__option {
+  font-size: 12px;
+
+  opacity: 0.5;
+  color: red;
+}
+
+.single-column-offset {
+  margin-right: 15px;
+  margin-left: 15px;
+
+  .__options-wrapper {
+    border-top: 0;
+  }
+
+  @media #{$phones-max} {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+.promotional-code {
+  .__promo-code {
+    margin-top: 25px;
+  }
+}
+
+#promotional-code {
+  position: relative;
+
+  padding-right: 22px;
+
+  @media #{$phones-max} {
+    padding-right: 0;
+  }
+
+  .__code-verification {
+    position: absolute;
+    right: 30px;
+    bottom: 10px;
+
+    cursor: pointer;
+
+    color: $text-colors-highlight;
+    border: none;
+    background-color: transparent;
+  }
+
+  &.disabled {
+    .__code-verification {
+      display: none;
+    }
+  }
+
+  &.error {
+    .__code-verification {
+      color: red;
+    }
+  }
+}
+
+#promo-code {
+  padding-right: 23px;
+}
+
+
+// === select + options styling for cc-month and cc-year === //
+
+.__options-wrapper {
+  top: 0;
+
+  overflow: hidden;
+  // border: 1px solid $border-colors-light;
+
+  border-radius: 0;
+
+
+  &:before {
+    position: absolute;
+    top: 24px;
+    right: 10px;
+
+    width: 6px;
+    height: 15px;
+
+    content: '';
+
+    background-image: url('../images/select_arrows_icon.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 5px;
+
+    @media #{$phones-max} {
+      right: 20px;
+    }
+  }
+
+  .form-field > label {
+    padding-left: 0;
+  }
+}
+
+
+// === Checkbox styling === //
+
+.standard-checkbox,
+.standard-checkbox-mobile,
+.standard-checkbox-single-column-form {
+
+  .__checkbox-wrapper {
+    position: relative;
+
+    height: 25px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+
+    @media screen and (max-width: 390px) {
+      height: 30px;
+      margin-top: 25px;
+      margin-bottom: 30px;
+    }
+
+    .__checkbox-label {
+      font-family: 'Open Sans';
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.3;
+
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      padding-left: 30px;
+
+      white-space: normal;
+      text-transform: none;
+
+      opacity: 1;
+      background-image: url('../images/checkbox-empty.svg');
+      background-repeat: no-repeat;
+      background-position: 0 center;
+    }
+
+    input[type=checkbox] {
+      display: none;
+
+      &:checked + .__checkbox-label {
+        background-image: url('../images/checkbox-checked.svg');
+      }
+    }
+  }
+}
+
+.__checkbox--mobile-hide {
+  display: block;
+  @media #{$phones-max} {
+    display: none;
+  }
+}
+
+.__checkbox--mobile-show {
+  display: none;
+  @media #{$phones-max} {
+    display: block;
+  }
+}
+
+
+// === cc-csc input field styling === //
+
+.__csc-icon {
+  font-size: 17px;
+  font-weight: 700;
+
+  position: absolute;
+  top: 10px;
+  right: 0;
+
+  width: 25px;
+  height: 25px;
+  margin: 10px;
+
+  cursor: pointer;
+  text-align: center;
+
+  color: $color-white;
+  border-radius: 12.5px;
+  background-color: #D2D3D4;
+}
+
+.__csc-icon--left {
+  @extend .__csc-icon;
+
+  right: 15px;
+}
+
+.form-container {
+  overflow: hidden;
+
+  padding: 1px;
+
+  border: 1px solid $border-colors-light;
+
+  .form-field {
+    border: none;
+  }
+}
+
+.form-container--margins {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+
+// === form errors styling === //
+
+#checkout-form {
+  .__form-field-wrapper {
+    padding-top: 1px;
+    padding-bottom: 1px;
+
+    .__form-label {
+      display: block;
+
+      pointer-events: none;
+    }
+
+    .__form-label--csc {
+      padding-left: 10px;
+    }
+
+    .__form-label-error {
+      display: none;
+
+      pointer-events: none;
+    }
+
+    &.error {
+      .form-field {
+        border: 1px solid $border-colors-invalid;
+        background-color: $background-colors-invalid;
+      }
+
+      .__form-label {
+        display: none;
+      }
+
+      .__form-label-error {
+        display: block;
+
+        color: red;
+      }
+    }
+    &.success {
+      .form-field {
+        border: 1px solid $border-colors-selected;
+        background-color: $background-colors-selected;
+      }
+      .__form-label {
+        display: none;
+      }
+      .__form-label-success {
+        display: block;
+
+        color: green;
+      }
+    }
+    &.info {
+      .form-field {
+        border: 1px solid $border-colors-infoField;
+        background-color: $background-colors-infoField;
+      }
+      .__form-label {
+        display: none;
+      }
+      .__form-label-info {
+        display: block;
+
+        color: $text-colors-infoField;
+      }
+    }
+  }
+
+  .form-container {
+    &.error {
+      border: 1px solid $border-colors-invalid;
+      .form-field {
+        border: none;
+        background-color: $background-colors-invalid;
+      }
+      .__form-label {
+        display: none;
+      }
+
+      .__form-label-error {
+        display: block;
+
+        color: red;
+      }
+    }
+  }
+}
+
+.disable {
+  pointer-events: none;
+}
+
+.fillable-forms {
+  display: none;
+}

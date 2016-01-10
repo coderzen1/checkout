@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge; chrome=1">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1, user-scalable=no">
+    <title>Hide.me checkout</title>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <link href='//fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="/bower_components/normalize-css/normalize.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
+    <script src="/bower_components/noty/js/noty/packaged/jquery.noty.packaged.min.js"></script>
+    <script src="/bower_components/jquery-payment/lib/jquery.payment.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+  </head>
+
+  <body>
+    <header class="site-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="header">
+                        <img class="__logo" src="images/hideme-logo-white.svg" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <form action="server-submit-url" method="post" class="form" name="checkout-form" id="checkout-form" autocomplete="on">
+        <div class="wrapper">
+            <div class="notice"></div>
+            <div class="container payment-plan-section">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <section class="plans">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <h2 class="__title">Choose Your Plan</h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-4">
+                                    <article class="data-box payment-plan data-box--selected" id="plan-1" data-plan-id="1" data-plan-original-price="21.22" data-plan-price="11.67" data-billing-period="Billed Annually">
+                                        <input type="radio" checked="checked" name="plan" class="__checkbox js-field" data-duration="1" />
+                                        <p class="__top-text">12 Months</p>
+                                        <p class="__price">$11.67</p>
+                                        <p class="__bottom-text">per month</p>
+                                        <p class="__discount">45% Off</p>
+                                        <p class="__billing">Billed $140.00 every 12 months</p>
+                                    </article>
+                                </div>
+                                <div class="col-xs-12 col-sm-4">
+                                    <article class="data-box payment-plan" id="plan-2" data-plan-id="2" data-plan-original-price="22.62" data-plan-price="14.70" data-billing-period="Billed Biannually">
+                                        <input type="radio" name="plan" class="__checkbox js-field" data-duration="2" />
+                                        <p class="__top-text">6 Months</p>
+                                        <p class="__price">$14.70</p>
+                                        <p class="__bottom-text">per month</p>
+                                        <p class="__discount">35% Off</p>
+                                        <p class="__billing">Billed $88.00 every 6 months</p>
+                                    </article>
+                                </div>
+                                <div class="col-xs-12 col-sm-4">
+                                    <article class="data-box payment-plan" id="plan-3" data-plan-id="3" data-plan-price="20.00" data-billing-period="Billed Monthly">
+                                        <input type="radio" name="plan" class="__checkbox js-field" data-duration="3" />
+                                        <p class="__top-text">1 Month</p>
+                                        <p class="__price">$20.00</p>
+                                        <p class="__bottom-text">per month</p>
+                                        <p class="__discount"></p>
+                                        <p class="__billing">Billed $20.00 every month</p>
+                                    </article>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <div class="js-payments-scrolltop"></div>
+            <div class="container payment-method-section">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <section class="payments">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6">
+                                    <h2 class="__title">Payment Method</h2>
+                                </div>
+                                <div class="col-sm-6">
+                                    <h4 class="__title--highlight __title--mobile-hide expand-payment-methods">Show Other Payment Methods</h4>
+                                </div>
+                            </div>
+                            <div class="row payments-top-row">
+                                <div class="col-xs-12 col-sm-4">
+                                    <div class="data-box payment-option" data-form-type="two-column-form" id="payment-cc" data-payment-id="cc">
+                                        <input type="radio" checked="checked" name="payment_provider" class="__checkbox js-field" data-payment-id="cc" />
+                                        <img class="__image" src="images/credit_cards.svg" />
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-4">
+                                    <div class="data-box payment-option data-box--selected" data-form-type="express-form" id="payment-paypal" data-payment-id="paypal">
+                                        <input type="radio" name="payment_provider" class="__checkbox js-field" data-payment-id="paypal" />
+                                        <img class="__image" src="images/paypal_logo.svg" />
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-4">
+                                    <div class="data-box payment-option" data-form-type="single-column-form" id="payment-bitcoin" data-payment-id="bitcoin" data-payment-auto-renew="false">
+                                        <input type="radio" name="payment_provider" class="__checkbox js-field" data-payment-id="bitcoin" />
+                                        <img class="__image" src="images/bitcoin_logo.svg" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="payments-bottom-row">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-4">
+                                        <div class="data-box payment-option" id=""  data-form-type="two-column-form" data-payment-id="cc2">
+                                            <input type="radio" name="payment-option" class="__checkbox js-field" data-payment-id="cc2" />
+                                            <img class="__image" src="images/credit_cards.svg" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4">
+                                        <div class="data-box payment-option" data-form-type="express-form" id="" data-payment-id="paypal2">
+                                            <input type="radio" name="payment-option" class="__checkbox js-field" data-payment-id="paypal2" />
+                                            <img class="__image" src="images/paypal_logo.svg" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <div class="container mobile-payments-selector">
+                <div class="row payments">
+                    <div class="col-xs-12">
+                        <h4 class="__title--highlight __title--mobile-show expand-payment-methods">Show Other Payment Methods</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="hidden-inputs">
+                <input type="hidden" name="hidden-input-data-1" value="Hidden value 1">
+                <input type="hidden" name="hidden-input-data-2" value="Hidden value 2">
+                <input type="hidden" name="hidden-input-data-3" value="Hidden value 3">
+            </div>
+            <div class="js-fillable-forms-scrolltop"></div>
+            <div class="container form-fill-section">
+                <div class="row row-padding-top">
+                    <div class="col-xs-12">
+                        <section class="fillable-forms two-column-form">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="customer-info">
+                                        <h3 class="__title">Personal Details</h3>
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-12 __form-field-wrapper">
+                                                <input type="email" name="two-column-form-email" id="two-column-form-email" class="form-field js-field email" data-validator="isEmail" />
+                                                <label class="__form-label">Email Address</label>
+                                                <label class="__form-label-error"></label>
+                                                <label class="__form-label-info"></label>
+                                            </div>
+                                        </div>
+                                        <!-- personal details inputs -->
+                                        <!-- <div class="row row--no-spacing">
+                                            <div class="col-xs-12 col-sm-6 row--no-spacing __form-field-wrapper">
+                                                <input type="text" name="first-name" id="first-name" class="form-field--half first-name js-field first-name" data-validator="" />
+                                                <label class="__form-label">First Name</label>
+                                                <label class="__form-label-error"></label>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6 row--no-spacing __form-field-wrapper">
+                                                <input type="tel" name="phone" id="phone" class="form-field--half js-field phone" data-validator="" />
+                                                <label class="__form-label">Phone Number</label>
+                                                <label class="__form-label-error"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row row--no-spacing">
+                                            <div class="col-xs-12 col-sm-6 row--no-spacing __form-field-wrapper">
+                                                <input type="text" name="address" id="address" class="form-field--half address js-field address" data-validator="" />
+                                                <label class="__form-label">Address</label>
+                                                <label class="__form-label-error"></label>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6 row--no-spacing __form-field-wrapper">
+                                                <input type="text" name="country" id="country" class="form-field--half country js-field country" data-validator="" />
+                                                <label class="__form-label">Country</label>
+                                                <label class="__form-label-error"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row row--no-spacing">
+                                            <div class="col-xs-12 col-sm-6 row--no-spacing __form-field-wrapper">
+                                                <input type="text" name="postal-code" id="postal-code" class="form-field--half postal-code js-field postal-code" data-validator="" />
+                                                <label class="__form-label">Postal Code</label>
+                                                <label class="__form-label-error"></label>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6 row--no-spacing __form-field-wrapper">
+                                                <input type="text" name="state" id="state" class="form-field--half state js-field state" data-validator="" />
+                                                <label class="__form-label">State</label>
+                                                <label class="__form-label-error"></label>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="customer-info">
+                                        <h3 class="__title">Credit Card Details</h3>
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-12 __form-field-wrapper">
+                                                <input type="text" name="two-column-form-name" id="two-column-form-name" class="form-field js-field cc-name" data-validator="isName" />
+                                                <label class="__form-label">Cardholder's Name</label>
+                                                <label class="__form-label-error"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-12 __form-field-wrapper">
+                                                <input type="text" name="two-column-form-card-number" id="two-column-form-card-number" class="form-field js-field cc-number" autocomplete="cc-number" data-validator="cardNumber"/>
+                                                <label class="__form-label">Card Number</label>
+                                                <label class="__form-label-error"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row row--no-spacing row--left-1">
+                                            <div class="col-xs-12 col-sm-4 __options-wrapper row--no-spacing __form-field-wrapper row--pad-right-1">
+                                                <div class="form-container">
+                                                    <select name="two-column-form-cc-exp-month" id="two-column-form-cc-exp-month" class="form-field js-field cc-exp-month" data-validator="hasMonth">
+                                                        <option value="" class="form-field__option" disabled selected> </option>
+                                                        <option>January</option>
+                                                        <option>February</option>
+                                                        <option>March</option>
+                                                        <option>April</option>
+                                                        <option>May</option>
+                                                        <option>June</option>
+                                                        <option>July</option>
+                                                        <option>August</option>
+                                                        <option>September</option>
+                                                        <option>October</option>
+                                                        <option>November</option>
+                                                        <option>December</option>
+                                                    </select>
+                                                    <label class="__form-label">Month</label>
+                                                    <label class="__form-label-error"></label>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-4 __options-wrapper row--no-spacing __form-field-wrapper row--pad-right-1">
+                                                <div class="form-container">
+                                                    <select name="two-column-form-cc-exp-year" id="two-column-form-cc-exp-year" class="form-field js-field cc-exp-year" data-validator="hasYear">
+                                                        <option value="" disabled selected class="form-field__option"> </option>
+                                                        <option>2015</option>
+                                                        <option>2016</option>
+                                                        <option>2017</option>
+                                                        <option>2018</option>
+                                                        <option>2019</option>
+                                                        <option>2020</option>
+                                                        <option>2021</option>
+                                                        <option>2022</option>
+                                                        <option>2023</option>
+                                                        <option>2024</option>
+                                                        <option>2025</option>
+                                                        <option>2026</option>
+                                                        <option>2027</option>
+                                                        <option>2028</option>
+                                                        <option>2029</option>
+                                                        <option>2030</option>
+                                                    </select>
+                                                    <label class="__form-label">Expiry Year</label>
+                                                    <label class="__form-label-error"></label>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-4 row--no-spacing __form-field-wrapper">
+                                                <div class="form-container">
+                                                    <input type="tel" name="two-column-form-cc-csc" id="two-column-form-cc-csc" class="form-field js-field cc-csc" autocomplete="off" data-validator="cvcNumber" />
+                                                    <label class="__form-label __form-label--csc">CVV/CVC</label>
+                                                    <label class="__form-label-error"></label>
+                                                    <div class="__csc-icon" data-viewport='{ "selector": "body", "padding": 10, "left": 0 }' data-toggle="tooltip" data-placement="top" title="A 3-4 digit number on back of the card.">?</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="standard-checkbox">
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <div class="__checkbox-wrapper">
+                                                        <input type="checkbox" id="two-column-form-auto-renew-checkbox" name="auto-renew" checked="true" class="js-field js-auto-renew" />
+                                                        <label class="__checkbox-label" for="two-column-form-auto-renew-checkbox">Yes, please renew my account automatically.</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <!-- inline credit card validators -->
+                            <script type="text/javascript">
+                                $(function() {
+                                    'use strict';
+                                    window.FORM_VALIDATORS.cardNumber = window.validatorFactory({
+                                      clb: function($field, validationResponse) {
+                                        validationResponse($.payment.validateCardNumber($field.val()));
+                                      },
+                                      msg: HideMe.translations.FORM_ERRORS.cardNumber
+                                    });
+
+                                    window.FORM_VALIDATORS.hasMonth = window.validatorFactory({
+                                      clb: function($field, validationResponse) {
+                                        validationResponse(window.FORM_VALIDATORS.isRequired($field));
+                                      },
+                                      msg: HideMe.translations.FORM_ERRORS.cardMonth
+                                    });
+
+                                    window.FORM_VALIDATORS.hasYear = window.validatorFactory({
+                                      clb: function($field, validationResponse) {
+                                        validationResponse(window.FORM_VALIDATORS.isRequired($field));
+                                      },
+                                      msg: HideMe.translations.FORM_ERRORS.cardYear
+                                    });
+
+                                    window.FORM_VALIDATORS.cvcNumber = window.validatorFactory({
+                                      clb: function($field, validationResponse) {
+                                        validationResponse($.payment.validateCardCVC($field.val()));
+                                      },
+                                      msg: HideMe.translations.FORM_ERRORS.cardCvcNumber
+                                    });
+                                });
+                            </script>
+                        </section>
+                        <section class="fillable-forms single-column-form customer-info">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                                    <h3 class="__title">Personal Details</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6 col-sm-offset-3 __form-field-wrapper">
+                                    <input type="email" name="single-column-form-email" id="single-column-form-email" class="form-field js-field email" data-validator="isEmail isRequired" />
+                                    <label class="__form-label">Email Address</label>
+                                    <label class="__form-label-error"></label>
+                                    <label class="__form-label-info"></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                                    <h3 class="__title">Credit Card Details</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6 col-sm-offset-3 __form-field-wrapper">
+                                    <input type="text" name="single-column-form-name" id="single-column-form-name" class="form-field js-field cc-name" data-validator="isName" />
+                                    <label class="__form-label">Cardholder's Name</label>
+                                    <label class="__form-label-error"></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6 col-sm-offset-3 __form-field-wrapper">
+                                    <input type="text" name="single-column-form-card-number" id="single-column-form-card-number" class="form-field js-field cc-number" autocomplete="cc-number" data-validator="cardNumber" />
+                                    <label class="__form-label">Card Number</label>
+                                    <label class="__form-label-error"></label>
+                                </div>
+                            </div>
+
+                            <div class="row single-column-offset">
+                                <div class="col-xs-12 col-sm-6 col-sm-offset-3 __options-wrapper __form-field-wrapper">
+                                    <div class="form-container form-container--margins">
+                                        <select name="single-column-form-cc-exp-month" id="single-column-form-cc-exp-month" class="form-field js-field cc-exp-month" data-validator="hasMonth">
+                                            <option value="" class="form-field__option" disabled selected> </option>
+                                            <option>January</option>
+                                            <option>February</option>
+                                            <option>March</option>
+                                            <option>April</option>
+                                            <option>May</option>
+                                            <option>June</option>
+                                            <option>July</option>
+                                            <option>August</option>
+                                            <option>September</option>
+                                            <option>October</option>
+                                            <option>November</option>
+                                            <option>December</option>
+                                        </select>
+                                        <label class="__form-label">Month</label>
+                                        <label class="__form-label-error"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row single-column-offset">
+                                <div class="col-xs-12 col-sm-6 col-sm-offset-3 __options-wrapper __form-field-wrapper">
+                                    <div class="form-container form-container--margins">
+                                        <select name="single-column-form-cc-exp-year" id="single-column-form-cc-exp-year" class="form-field js-field cc-exp-year" data-validator="hasYear">
+                                            <option value="" disabled selected class="form-field__option"> </option>
+                                            <option>2015</option>
+                                            <option>2016</option>
+                                            <option>2017</option>
+                                            <option>2018</option>
+                                            <option>2019</option>
+                                            <option>2020</option>
+                                            <option>2021</option>
+                                            <option>2022</option>
+                                            <option>2023</option>
+                                            <option>2024</option>
+                                            <option>2025</option>
+                                            <option>2026</option>
+                                            <option>2027</option>
+                                            <option>2028</option>
+                                            <option>2029</option>
+                                            <option>2030</option>
+                                        </select>
+                                        <label class="__form-label">Expiry Year</label>
+                                        <label class="__form-label-error"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6 col-sm-offset-3 __form-field-wrapper">
+                                    <div class="form-container">
+                                        <input type="tel" name="single-column-form-cc-csc" id="single-column-form-cc-csc" class="form-field js-field cc-csc" autocomplete="off" data-validator="cvcNumber" />
+                                        <label class="__form-label">CVV/CVC</label>
+                                        <label class="__form-label-error"></label>
+                                        <div class="__csc-icon--left" data-viewport='{ "selector": "body", "padding": 10 }' data-trigger="click" data-toggle="tooltip" data-placement="top" title="A 3-4 digit number on back of the card.">?</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                                    <div class="standard-checkbox">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="__checkbox-wrapper">
+                                                    <input type="checkbox" id="single-column-form-auto-renew-checkbox" name="auto-renew" checked="true" class="js-field js-auto-renew" />
+                                                    <label class="__checkbox-label" for="single-column-form-auto-renew-checkbox">Yes, please renew my account automatically.</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="fillable-forms express-form">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                                    <div class="customer-info">
+                                        <h3 class="__title">Express Client Checkout</h3>
+                                        <div class="row">
+                                            <div class="col-xs-12 __form-field-wrapper">
+                                                <input type="email" name="express-form-email" id="express-form-email" class="form-field js-field email" data-validator="isEmail" />
+                                                <label class="__form-label">Email Address</label>
+                                                <label class="__form-label-error"></label>
+                                                <label class="__form-label-info"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                                    <div class="standard-checkbox">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="__checkbox-wrapper">
+                                                    <input type="checkbox" id="express-form-auto-renew-checkbox" name="auto-renew" checked="true" class="js-field js-auto-renew" />
+                                                    <label class="__checkbox-label" for="express-form-auto-renew-checkbox">Yes, please renew my account automatically.</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <section class="container discounts-and-renewal promotional-code">
+                    <div class="__promo-code">
+                        <div class="row">
+                            <div id="promotional-code" class="col-xs-12 col-sm-6 __form-field-wrapper">
+                                <input type="text" name="promo-code" id="promo-code" class="form-field js-field __promo-code-field" data-validator="isPromo" />
+                                <label class="__form-label __form-label-promo-code">Promo Code</label>
+                                <label class="__form-label-error"></label>
+                                <label class="__form-label-success"></label>
+                                <div class="__code-verification">Verify promo code</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="__content">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-4">
+                                    <div class="bill">
+                                        <p class="__top-text">Total: (<span class="js-billing-plan-period">Billed Annually</span>)</p>
+                                        <p class="__total">$<span class="js-total-price">140.00</span></p>
+                                        <p class="__original-price">Original price: $<span class="__strikethrough-text js-plan-original-price"></span></p>
+                                        <p class="__guarantee">14 day money-back guarantee</p>
+                                    </div>
+                                </div>
+                                <div class="cosl-xs-12 col-sm-4 button--mobile-show">
+                                    <div class="button-wrapper button-wrapper--footer">
+                                        <div class="loading">
+                                          <img src="images/loading.gif" />
+                                        </div>
+                                        <input type="submit" class="checkout-button __footer-button checkout-button--footer" value="Proceed to Checkout" />
+                                    </div>
+                                </div>
+                                <div class="cosl-xs-12 col-sm-4">
+                                    <p class="__terms">
+                                        By submitting this order you agree to the <span><a href="">Terms &amp; Conditions</a></span> and <span><a href="">Privacy Policy</a></span> of hide.me and confirm that you have taken notice of your <span><a href="">Right of Revocation</a></span> as a consumer. Your order will only be saved and processed after clicking the button below.
+                                    </p>
+                                </div>
+                                <div class="cosl-xs-12 col-sm-4 button--mobile-hide">
+                                    <div class="button-wrapper button-wrapper--footer">
+                                        <div class="loading">
+                                          <img src="images/loading.gif" />
+                                        </div>
+                                        <input type="submit" class="checkout-button __footer-button checkout-button--footer" value="Proceed to Checkout" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </form>
+
+
+    <!--[if lt IE 10]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- build:js scripts/main.js -->
+    <script src="scripts/populated-from-server.js"></script>
+    <script src="scripts/form-validators.js"></script>
+    <script src="scripts/custom-noty-theme.js"></script>
+    <script src="scripts/notifications.js"></script>
+    <script src="scripts/checkout-form.js"></script>
+    <script src="scripts/helpers.js"></script>
+    <!-- endbuild -->
+</body>
+</html>

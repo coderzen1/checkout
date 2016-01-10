@@ -1,0 +1,96 @@
+.button-wrapper {
+  position: relative;
+
+  &.button-wrapper--footer {
+    min-height: 110px;
+    @media #{$phones-max} {
+      min-height: 70px;
+      margin-top: 25px;
+    }
+  }
+
+  &.__footer-button {
+    position: absolute;
+    left: 0;
+
+    @media #{$desktops-min} {
+      top: 15%;
+    }
+    @media #{$tablets-min} and #{$desktops-max} {
+      top: 20%;
+    }
+    @media #{$phones-min} and #{$tablets-max} {
+      top: 30%;
+    }
+    @media #{$phones-max} {
+      position: relative;
+      left: initial;
+    }
+  }
+}
+
+.checkout-button {
+  font-size: 18px;
+  font-weight: 600;
+
+  width: 100%;
+  height: 50px;
+
+  color: $color-white;
+  border: 0;
+  border-radius: 2px;
+  background-color: $button-colors-submit;
+
+  &:hover {
+    background-color: $button-colors-submit-hover;
+  }
+}
+
+.button--mobile-hide {
+  display: block;
+  @media #{$phones-max} {
+    display: none;
+  }
+}
+
+.button--mobile-show {
+  display: none;
+  @media #{$phones-max} {
+    display: block;
+  }
+}
+
+#checkout-form {
+
+  .button-wrapper {
+    input:focus {
+      background-color: $button-colors-submit;
+    }
+  }
+}
+
+.loading {
+  position: absolute;
+  z-index: 500;
+  top: 5px;
+  right: 10px;
+  bottom: auto;
+  left: auto;
+  display: none;
+
+  @media #{$phones-max} {
+    top: auto;
+    right: 10px;
+    bottom: 5px;
+    left: auto;
+  }
+
+  img {
+    width: 40px;
+    height: 40px;
+  }
+
+  &.show {
+    display: block;
+  }
+}

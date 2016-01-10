@@ -1,0 +1,90 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+
+  width: 100%;
+  min-height: 110px;
+  padding-top: 20px;
+  padding-bottom: 0;
+
+  background-color: $background-colors-footer;
+
+  @media #{$phones-max} {
+    position: relative;
+  }
+
+  .__content {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .__terms {
+    font-size: 12px;
+
+    display: inline-block;
+
+    min-height: 110px;
+
+    vertical-align: middle;
+
+    @media #{$phones-max} {
+      min-height: 10px;
+      margin-top: 15px;
+    }
+  }
+}
+
+.bill {
+
+  .__top-text {
+    font-size: 13px;
+    font-weight: 600;
+
+    margin-bottom: 0;
+  }
+
+  .__plan-original-price {
+    margin-bottom: 0;
+  }
+
+  .__strikethrough-text {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 14px;
+
+    position: relative;
+
+
+    white-space: nowrap;
+
+    color: $border-colors-invalid;
+  }
+
+  .__strikethrough-text::after {
+    position: absolute;
+
+    top: 50%;
+    right: 0;
+    bottom: auto;
+    left: 0;
+
+    content: '';
+
+    border-top: 1px solid $border-colors-invalid;
+  }
+
+  .__total {
+    font-size: 44px;
+    font-weight: 600;
+
+    margin: 0;
+
+    color: $border-colors-selected;
+  }
+
+  .__guarantee {
+    font-size: 13px;
+
+    color: $text-colors-light;
+  }
+}

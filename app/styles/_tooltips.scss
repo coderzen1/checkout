@@ -1,0 +1,46 @@
+// Tooltips
+// --------------------------------------------------
+
+// Base class
+.tooltip {
+  @include opacity(0);
+  // Reset font and text properties given new insertion method
+
+  font-family: $font-family-base;
+  font-size: $font-size-small;
+  font-weight: normal;
+  line-height: 1.4;
+
+  position: absolute;
+  z-index: $zindex-tooltip; // padding: $tooltip-arrow-width 0;}
+  // &.right  { margin-left:  3px; padding: 0 $tooltip-arrow-width; }
+  // &.bottom { margin-top:   3px; padding: $tooltip-arrow-width 0; }
+  // &.left   { margin-left: -3px; padding: 0 $tooltip-arrow-width; }
+  left: -100px;
+
+  display: block;
+
+  &.in {
+    @include opacity($tooltip-opacity);
+  }
+  &.top {
+    margin-top: -12px;
+  }
+}
+
+// Wrapper for the tooltip content
+.tooltip-inner {
+  width: 400px;
+  padding: 15px 30px;
+
+  text-align: center;
+  text-decoration: none;
+
+  color: $tooltip-color;
+  border-radius: $border-radius-base;
+  background-color: rgba(0,0,0,0.7);
+
+  @media #{$phones-max} {
+    width: 320px;
+  }
+}

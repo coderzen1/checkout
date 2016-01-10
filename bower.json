@@ -1,0 +1,11 @@
+{
+  "name": "hide-me",
+  "private": true,
+  "dependencies": {
+    "jquery": "1.11.3",
+    "normalize-css": "~3.0.3",
+    "bootstrap-sass": "~3.3.4",
+    "noty": "~2.3.5",
+    "jquery-payment": "1.1.6"
+  }
+}
